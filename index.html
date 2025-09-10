@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Future Tech Anime</title>
+<style>
+/* Background Gradient Animation */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(-45deg, #1e1e2f, #121212, #1b1b2e, #121212);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #fff;
+}
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+header {
+  background: rgba(0,0,0,0.6);
+  padding: 15px;
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px #000;
+}
+
+.container {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.anime-card {
+  background: rgba(20,20,30,0.8);
+  border-radius: 12px;
+  width: 180px;
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+.anime-card:hover {
+  transform: scale(1.08) translateY(-5px);
+  box-shadow: 0 0 20px #1e90ff;
+}
+
+/* Glowing Border Animation */
+.anime-card::before {
+  content: "";
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  background: linear-gradient(45deg, #1e90ff, #ff1493, #00ff7f, #1e90ff);
+  z-index: 0;
+  border-radius: 14px;
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.anime-card:hover::before { opacity: 1; }
+
+.anime-card img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+.anime-card:hover img {
+  transform: scale(1.05);
+}
+
+.anime-card h3 {
+  margin: 10px 0 5px 0;
+  font-size: 1em;
+}
+
+.anime-card a {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #1e90ff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+.anime-card a:hover { color: #ff1493; }
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track { background: #121212; }
+::-webkit-scrollbar-thumb { background: #1e90ff; border-radius: 5px; }
+</style>
+</head>
+<body>
+<header>Future Tech Anime</header>
+<div class="container" id="animeContainer"></div>
+
+<script>
+// Sample anime data (replace/add as needed)
+const animes = [
+  {title: "Naruto", image: "https://i.imgur.com/1XbXhVb.jpg", url: "https://animepahe.com/anime/1"},
+  {title: "One Piece", image: "https://i.imgur.com/3M0XxRv.jpg", url: "https://animepahe.com/anime/2"},
+  {title: "Attack on Titan", image: "https://i.imgur.com/5T4vMzF.jpg", url: "https://animepahe.com/anime/3"},
+  {title: "Demon Slayer", image: "https://i.imgur.com/9kV0LFI.jpg", url: "https://animepahe.com/anime/4"},
+  {title: "My Hero Academia", image: "https://i.imgur.com/0dUqlz9.jpg", url: "https://animepahe.com/anime/5"},
+  {title: "Jujutsu Kaisen", image: "https://i.imgur.com/7tQLxJr.jpg", url: "https://animepahe.com/anime/6"},
+  {title: "Dragon Ball Super", image: "https://i.imgur.com/8nLZaU7.jpg", url: "https://animepahe.com/anime/7"}
+];
+
+const container = document.getElementById("animeContainer");
+
+animes.forEach(anime => {
+  const card = document.createElement("div");
+  card.className = "anime-card";
+  card.innerHTML = `
+    <img src="${anime.image}" alt="${anime.title}">
+    <h3>${anime.title}</h3>
+    <a href="${anime.url}" target="_blank">Watch</a>
+  `;
+  container.appendChild(card);
+});
+</script>
+</body>
+</html>
